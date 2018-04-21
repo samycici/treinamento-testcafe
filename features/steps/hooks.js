@@ -1,4 +1,5 @@
 const { defineSupportCode } = require('cucumber');
+const { setDefaultTimeout } = require('cucumber');
 const fs = require('fs');
 const createTestCafe = require('testcafe');
 const testControllerHolder = require('../support/testControllerHolder');

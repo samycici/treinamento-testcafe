@@ -6,4 +6,4 @@ Funcionalidade: Buscar imovel para alugar
     Quando clicar em na opcao aluguel
     Quando inserir bairro "Vila Clementino"
     Quando clicar em buscar
-    Entao exibir mensagem "apartamentos para alugar em Vila Clementino, São Paulo - SP'"
+    Entao exibir mensagem "apartamentos para alugar em Vila Clementino, São Paulo - SP"

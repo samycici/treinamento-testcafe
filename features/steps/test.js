@@ -1,5 +1,9 @@
-const { defineSupportCode } = require('cucumber');
+const HomePage = require('../pages/homePage.js');
+const ResultadosPage  = require('../pages/results.js');
 const Selector = require('testcafe').Selector;
+
+const { defineSupportCode } = require('cucumber');
+const home = new HomePage;
 
 defineSupportCode(({ Given, When, Then }) => {
   let testController = null;
@@ -13,22 +17,25 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   When('clicar em na opcao aluguel', function ()  {
-    const buttonAluguel = Selector('#btnLocacao').with({ boundTestRun: testController });
-    return testController.click(buttonAluguel);
+    return testController
+            .click(home.buttonAluguel);
   });
 
   When('inserir bairro {stringInDoubleQuotes}', (bairro) => {
-    const inputBairro = Selector('#location').with({ boundTestRun: testController });
-    return testController.typeText(inputBairro, bairro);
+    return testController
+              .typeText(home.inputBairro, bairro)
+              .pressKey('enter');
   });
 
   When('clicar em buscar', function () {
-    const buttonBuscar = Selector('#btnBuscar').with({ boundTestRun: testController });
-    return testController.click(buttonBuscar);
+     testController
+             .click(home.buttonBuscar);
+      return resultados = new ResultadosPage(testController);
+
   });
 
-  Then('exibir mensagem {stringInDoubleQuotes}', (mensagem)  => {
-    const labelPesquisa = Selector('#title pull-left').with({ boundTestRun: testController });
-    return testController.expect(labelPesquisa.innerText).contains(mensagem);
+  Then('exibir mensagem {stringInDoubleQuotes}',  {timeout: 30000}, (mensagem)  => {
+    return testController
+            .expect(resultados.labelPesquisa.innerText).contains(mensagem);
   });
 });
